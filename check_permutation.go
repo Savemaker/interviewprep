@@ -10,15 +10,21 @@ func IsPermutation(a, b string) bool {
 		return false
 	}
 
-	hashmap := make(map[rune]bool)
+	hashmap := make(map[rune]int)
 
 	for _, v := range a {
-		hashmap[v] = true
+		hashmap[v] += 1
 	}
 
 	for _, v := range b {
-		delete(hashmap, v)
+		count, ok := hashmap[v]
+		if ok {
+			if count-1 == 0 {
+				delete(hashmap, v)
+			} else {
+				hashmap[v] -= 1
+			}
+		}
 	}
-
 	return len(hashmap) == 0
 }
