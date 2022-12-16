@@ -13,10 +13,8 @@
 package main
 
 func Urlify(input []rune, length int) []rune {
-	c := 0
 	for i, j := length-1, len(input)-1; i >= 0; i-- {
 		if input[i] == ' ' {
-			c++
 			input[j] = '0'
 			j--
 			input[j] = '2'
